@@ -1,4 +1,4 @@
-<#
+﻿<#
   把 ios-port 推到 GitHub 并触发 CI 编译，产出 iPhone 可安装的 unsigned IPA。
   用法:
     .\push-to-ci.ps1 -User <GitHub用户名> -Repo <仓库名> -Token <ghp_xxx>

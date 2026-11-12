@@ -1,8 +1,13 @@
-<#
+﻿<#
   莹星路线 IPA 云编译 —— 一键推送脚本
   流程: 验证 token -> 自动建仓库(不存在时) -> 推送 -> 清理 token -> 触发并跟踪 Actions -> 取产物信息
   用法: powershell -NoProfile -ExecutionPolicy Bypass -File .\push-now.ps1
+        可脚本化: -Token ghp_xxx [-Repo yyxl-ios]
 #>
+param(
+    [string]$Token = '',
+    [string]$Repo  = ''
+)
 $ErrorActionPreference = 'Stop'
 try { [Console]::OutputEncoding = [System.Text.Encoding]::UTF8 } catch {}
 
@@ -18,12 +23,18 @@ try {
     Say "仓库目录: $repo_dir"
 
     # ---------- 1. token ----------
-    Say "`n[1/6] 粘贴 GitHub token（不回显），回车确认" Cyan
-    Say "      没有就开 https://github.com/settings/tokens 生成，勾 repo + workflow" DarkYellow
-    $sec = Read-Host -AsSecureString "Token"
-    $bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($sec)
-    try { $token = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($bstr) }
-    finally { [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr) }
+    if ([string]::IsNullOrWhiteSpace($Token)) {
+        Say "`n[1/6] 粘贴 GitHub token（不回显），回车确认" Cyan
+        Say "      没有就开 https://github.com/settings/tokens 生成，勾 repo + workflow" DarkYellow
+        $sec = Read-Host -AsSecureString "Token"
+        $bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($sec)
+        try { $token = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($bstr) }
+        finally { [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr) }
+    }
+    else {
+        Say "`n[1/6] 使用命令行传入的 token" Cyan
+        $token = $Token
+    }
     $token = $token.Trim()
     if ($token.Length -lt 20) { throw "token 长度异常（$($token.Length)），疑似没复制全" }
 
@@ -42,8 +53,14 @@ try {
     Say "      OK 账号: $user" Green
 
     # ---------- 3. 仓库名 ----------
-    Say "`n[3/6] 仓库名（直接回车用默认 yyxl-ios）" Cyan
-    $repo = Read-Host "Repo"
+    if ([string]::IsNullOrWhiteSpace($Repo)) {
+        Say "`n[3/6] 仓库名（直接回车用默认 yyxl-ios）" Cyan
+        $repo = Read-Host "Repo"
+    }
+    else {
+        Say "`n[3/6] 仓库名: $Repo" Cyan
+        $repo = $Repo
+    }
     if ([string]::IsNullOrWhiteSpace($repo)) { $repo = 'yyxl-ios' }
     $repo = $repo.Trim()
 
