@@ -1,8 +1,10 @@
 name: build-ipa
 
-# 用法：把 ios-port/ 当作仓库根目录 push 到 GitHub，
-# Actions -> build-ipa -> Run workflow -> 下载 artifact 里的 YingXingRoute-unsigned.ipa
-# 然后回 Windows 用爱思助手 "工具箱 -> IPA 签名" 签订后安装。
+# 用法二选一：
+#  A. git push（推荐，能保证 .github 一起上去）
+#  B. GitHub 网页 Add file -> Upload files，拖 ios-port 里面的内容（不是 ios-port 文件夹本身）
+# 之后：Actions -> build-ipa -> Run workflow -> 下载 Artifacts 里的 YingXingRoute-unsigned.ipa
+# 再用爱思助手 工具箱 -> IPA 签名 签订后安装。
 
 on:
   workflow_dispatch:
@@ -19,31 +21,54 @@ jobs:
         run: |
           xcodebuild -version
           xcode-select -p
+          uname -m
+
+      - name: Locate project root
+        run: |
+          set -e
+          SCRIPT=$(find . -name build-ipa-macos.sh -not -path './.git/*' | head -1)
+          if [ -z "$SCRIPT" ]; then
+            echo "::error::找不到 build-ipa-macos.sh，检查仓库根目录是否传齐"
+            ls -la
+            exit 1
+          fi
+          ROOT=$(dirname "$SCRIPT")
+          echo "PROJECT_ROOT=$ROOT" >> "$GITHUB_ENV"
+          echo "项目根: $ROOT"
+          ls -la "$ROOT"
+          test -d "$ROOT/YingXingRoute.xcodeproj" || { echo "::error::缺 YingXingRoute.xcodeproj"; exit 1; }
+          test -f "$ROOT/YingXingRoute.xcodeproj/xcshareddata/xcschemes/YingXingRoute.xcscheme" || { echo "::error::缺共享 scheme"; exit 1; }
 
       - name: Build unsigned IPA
         run: |
+          set -e
+          cd "$PROJECT_ROOT"
           chmod +x build-ipa-macos.sh
           # NO_NFC=1: 免费 Apple ID 无法签名 NFC entitlement，必须去掉；
-          # 有付费开发者账号（且签的是 development/ad-hoc 带 NFC capability）时删掉这个变量。
+          # 有付费开发者账号（且用带 NFC capability 的 profile）时删掉这个变量。
           MODE=unsigned NO_NFC=1 ./build-ipa-macos.sh
 
       - name: Verify IPA
         run: |
           set -e
-          IPA=$(ls build/ipa/*.ipa | head -1)
+          IPA=$(ls "$PROJECT_ROOT"/build/ipa/*.ipa | head -1)
           echo "IPA=$IPA"
           unzip -l "$IPA" | head -30
-          # 没有 Mach-O 可执行体就直接失败，避免产出装不上的包
+          rm -rf /tmp/chk && mkdir -p /tmp/chk
           unzip -o -q "$IPA" -d /tmp/chk
           APP=$(ls -d /tmp/chk/Payload/*.app | head -1)
           EXE=$(/usr/libexec/PlistBuddy -c "Print :CFBundleExecutable" "$APP/Info.plist")
-          test -f "$APP/$EXE" || { echo "缺可执行体 $EXE"; exit 1; }
+          echo "CFBundleExecutable=$EXE"
+          test -f "$APP/$EXE" || { echo "::error::缺可执行体 $EXE"; exit 1; }
           file "$APP/$EXE"
+          /usr/libexec/PlistBuddy -c "Print :CFBundleIdentifier" "$APP/Info.plist"
+          /usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" "$APP/Info.plist"
           /usr/bin/codesign -dvv "$APP" || true
+          echo "::notice::unsigned ipa 就绪，可下载后交爱思助手签名"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: YingXingRoute-unsigned
-          path: build/ipa/*.ipa
+          path: ${{ env.PROJECT_ROOT }}/build/ipa/*.ipa
           retention-days: 14
