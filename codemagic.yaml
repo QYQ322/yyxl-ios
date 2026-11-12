@@ -1,0 +1,41 @@
+﻿# Codemagic CI 配置（免费 500 分钟/月 macOS 构建）
+# 用法：codemagic.io 用 GitHub 登录 -> Add application -> 选 yyxl-ios -> 选 "Codemagic YAML" -> Start new build
+workflows:
+  unsigned-ipa:
+    name: YingXingRoute unsigned IPA
+    instance_type: mac_mini_m2
+    max_build_duration: 40
+    environment:
+      xcode: latest
+      vars:
+        BUNDLE_ID: com.fyguiji.prp.ios
+    scripts:
+      - name: Show toolchain
+        script: |
+          xcodebuild -version
+          sw_vers
+      - name: Build (unsigned)
+        script: |
+          set -e
+          xcodebuild -project YingXingRoute.xcodeproj \
+            -scheme YingXingRoute \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath build/dd \
+            PRODUCT_BUNDLE_IDENTIFIER="$BUNDLE_ID" \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
+            CODE_SIGN_ENTITLEMENTS= \
+            build
+      - name: Package IPA
+        script: |
+          set -e
+          APP=$(find build/dd/Build/Products/Release-iphoneos -maxdepth 1 -name "*.app" | head -1)
+          test -n "$APP" || { echo "找不到 .app"; exit 1; }
+          mkdir -p build/ipa/Payload
+          cp -R "$APP" build/ipa/Payload/
+          cd build/ipa && zip -qry YingXingRoute-unsigned.ipa Payload
+          unzip -l YingXingRoute-unsigned.ipa
+          file Payload/YingXingRoute.app/YingXingRoute
+    artifacts:
+      - build/ipa/*.ipa
