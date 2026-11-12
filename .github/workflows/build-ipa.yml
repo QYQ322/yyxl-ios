@@ -1,0 +1,49 @@
+name: build-ipa
+
+# 用法：把 ios-port/ 当作仓库根目录 push 到 GitHub，
+# Actions -> build-ipa -> Run workflow -> 下载 artifact 里的 YingXingRoute-unsigned.ipa
+# 然后回 Windows 用爱思助手 "工具箱 -> IPA 签名" 签订后安装。
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  ipa:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show toolchain
+        run: |
+          xcodebuild -version
+          xcode-select -p
+
+      - name: Build unsigned IPA
+        run: |
+          chmod +x build-ipa-macos.sh
+          # NO_NFC=1: 免费 Apple ID 无法签名 NFC entitlement，必须去掉；
+          # 有付费开发者账号（且签的是 development/ad-hoc 带 NFC capability）时删掉这个变量。
+          MODE=unsigned NO_NFC=1 ./build-ipa-macos.sh
+
+      - name: Verify IPA
+        run: |
+          set -e
+          IPA=$(ls build/ipa/*.ipa | head -1)
+          echo "IPA=$IPA"
+          unzip -l "$IPA" | head -30
+          # 没有 Mach-O 可执行体就直接失败，避免产出装不上的包
+          unzip -o -q "$IPA" -d /tmp/chk
+          APP=$(ls -d /tmp/chk/Payload/*.app | head -1)
+          EXE=$(/usr/libexec/PlistBuddy -c "Print :CFBundleExecutable" "$APP/Info.plist")
+          test -f "$APP/$EXE" || { echo "缺可执行体 $EXE"; exit 1; }
+          file "$APP/$EXE"
+          /usr/bin/codesign -dvv "$APP" || true
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: YingXingRoute-unsigned
+          path: build/ipa/*.ipa
+          retention-days: 14

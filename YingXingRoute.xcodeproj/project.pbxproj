@@ -1,0 +1,308 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		189C690E8C1F50642E89CABD /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9AE801CFF81E72B9D6C2C5 /* App.swift */; };
+		E58E05A264CAC6FCAC0867F6 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B40CC6ACF49683BB9FF860 /* Models.swift */; };
+		CCC42ADE78C7B30C6F8BB52F /* RouteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4409B0A37F4400A47FB451A /* RouteStore.swift */; };
+		E532ED35FE951538708F1A11 /* LocationInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53583AB9C7AC3A79660B9832 /* LocationInjector.swift */; };
+		FC7BAC3E0591C9AD18C22D61 /* RoutePlaybackEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E9FAAF126D6DD5D8A23C0 /* RoutePlaybackEngine.swift */; };
+		3DEDD001AE775395CD88C63C /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D355B69D0CB0AA02615615C /* MapScreen.swift */; };
+		D6E861C3696AEF712D12AE08 /* JoystickOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA3931EAE1EC19BBCA71314 /* JoystickOverlay.swift */; };
+		3C28CF62A1867F6F45679FB8 /* NfcBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF336521A82FF01E1EA706 /* NfcBridge.swift */; };
+		64E02268ED8AE8CC94063E88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B8EED514E0965F50C77AC /* ContentView.swift */; };
+		97BC6BDC0924AE2B4994964E /* RouteListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5A27D80E73E376AD1E583 /* RouteListScreen.swift */; };
+		BB0896AD1E55F18AEEC11B27 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC71495FFF5879842494048C /* SettingsScreen.swift */; };
+		EA08040786B60F38A7AAACB8 /* CoordConv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BDFFE23976B031A5412360 /* CoordConv.swift */; };
+		CBA1C488B3B3159E216B27BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05D2C52C5D762EDC1DFA35F8 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5B9AE801CFF81E72B9D6C2C5 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		44B40CC6ACF49683BB9FF860 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		E4409B0A37F4400A47FB451A /* RouteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStore.swift; sourceTree = "<group>"; };
+		53583AB9C7AC3A79660B9832 /* LocationInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInjector.swift; sourceTree = "<group>"; };
+		182E9FAAF126D6DD5D8A23C0 /* RoutePlaybackEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePlaybackEngine.swift; sourceTree = "<group>"; };
+		9D355B69D0CB0AA02615615C /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
+		FBA3931EAE1EC19BBCA71314 /* JoystickOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickOverlay.swift; sourceTree = "<group>"; };
+		38FF336521A82FF01E1EA706 /* NfcBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NfcBridge.swift; sourceTree = "<group>"; };
+		803B8EED514E0965F50C77AC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C4A5A27D80E73E376AD1E583 /* RouteListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteListScreen.swift; sourceTree = "<group>"; };
+		EC71495FFF5879842494048C /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
+		79BDFFE23976B031A5412360 /* CoordConv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordConv.swift; sourceTree = "<group>"; };
+		05D2C52C5D762EDC1DFA35F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2619C9670122649BB9EE8294 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE30537F17E9FEC13C368C9F /* YingXingRoute.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YingXingRoute.entitlements; sourceTree = "<group>"; };
+		3498EF03CBBFFB6D657022CF /* YingXingRoute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YingXingRoute.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3D23AA266B93492310D78550 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		91E147ACB44A0B2F88C3817C = {
+			isa = PBXGroup;
+			children = (
+				1AD89747BE32E5EDABB90B21 /* YingXingRoute */,
+				6B05B18DA82A9FCBED4E5BF3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1AD89747BE32E5EDABB90B21 /* YingXingRoute */ = {
+			isa = PBXGroup;
+			children = (
+				5B9AE801CFF81E72B9D6C2C5 /* App.swift */,
+				44B40CC6ACF49683BB9FF860 /* Models.swift */,
+				E4409B0A37F4400A47FB451A /* RouteStore.swift */,
+				53583AB9C7AC3A79660B9832 /* LocationInjector.swift */,
+				182E9FAAF126D6DD5D8A23C0 /* RoutePlaybackEngine.swift */,
+				9D355B69D0CB0AA02615615C /* MapScreen.swift */,
+				FBA3931EAE1EC19BBCA71314 /* JoystickOverlay.swift */,
+				38FF336521A82FF01E1EA706 /* NfcBridge.swift */,
+				803B8EED514E0965F50C77AC /* ContentView.swift */,
+				C4A5A27D80E73E376AD1E583 /* RouteListScreen.swift */,
+				EC71495FFF5879842494048C /* SettingsScreen.swift */,
+				79BDFFE23976B031A5412360 /* CoordConv.swift */,
+				05D2C52C5D762EDC1DFA35F8 /* Assets.xcassets */,
+				2619C9670122649BB9EE8294 /* Info.plist */,
+				DE30537F17E9FEC13C368C9F /* YingXingRoute.entitlements */,
+			);
+			path = YingXingRoute;
+			sourceTree = "<group>";
+		};
+		6B05B18DA82A9FCBED4E5BF3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3498EF03CBBFFB6D657022CF /* YingXingRoute.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5936C061DB57417BC9588B75 /* YingXingRoute */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C1AF496C6E84E903D5586A32;
+			buildPhases = (
+				6F20A3206E7D2FE78D7FADE5 /* Sources */,
+				3D23AA266B93492310D78550 /* Frameworks */,
+				85AF5039598CA25A9CCD52CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YingXingRoute;
+			productName = YingXingRoute;
+			productReference = 3498EF03CBBFFB6D657022CF /* YingXingRoute.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		21ED56F57DD372261E2DA03E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					5936C061DB57417BC9588B75 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 6BD089F7DBB1FC97FCBE945D;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = "zh-Hans";
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				"zh-Hans",
+				en,
+				Base,
+			);
+			mainGroup = 91E147ACB44A0B2F88C3817C;
+			productRefGroup = 6B05B18DA82A9FCBED4E5BF3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5936C061DB57417BC9588B75 /* YingXingRoute */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		85AF5039598CA25A9CCD52CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBA1C488B3B3159E216B27BC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6F20A3206E7D2FE78D7FADE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				189C690E8C1F50642E89CABD /* App.swift in Sources */,
+				E58E05A264CAC6FCAC0867F6 /* Models.swift in Sources */,
+				CCC42ADE78C7B30C6F8BB52F /* RouteStore.swift in Sources */,
+				E532ED35FE951538708F1A11 /* LocationInjector.swift in Sources */,
+				FC7BAC3E0591C9AD18C22D61 /* RoutePlaybackEngine.swift in Sources */,
+				3DEDD001AE775395CD88C63C /* MapScreen.swift in Sources */,
+				D6E861C3696AEF712D12AE08 /* JoystickOverlay.swift in Sources */,
+				3C28CF62A1867F6F45679FB8 /* NfcBridge.swift in Sources */,
+				64E02268ED8AE8CC94063E88 /* ContentView.swift in Sources */,
+				97BC6BDC0924AE2B4994964E /* RouteListScreen.swift in Sources */,
+				BB0896AD1E55F18AEEC11B27 /* SettingsScreen.swift in Sources */,
+				EA08040786B60F38A7AAACB8 /* CoordConv.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		64F698CADAF953D5401BB743 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("DEBUG=1", "$(inherited)");;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F066A9F349DA9567C6896ABD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9A2FF341624FB6189F88D5DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
+				CODE_SIGN_ENTITLEMENTS = YingXingRoute/YingXingRoute.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 12118;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = YingXingRoute/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks");;
+				MARKETING_VERSION = 1.21.18;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fyguiji.prp.ios;
+				PRODUCT_NAME = $(TARGET_NAME);
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3ED3DD793DE054529D2C4E72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
+				CODE_SIGN_ENTITLEMENTS = YingXingRoute/YingXingRoute.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 12118;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = YingXingRoute/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks");;
+				MARKETING_VERSION = 1.21.18;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fyguiji.prp.ios;
+				PRODUCT_NAME = $(TARGET_NAME);
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6BD089F7DBB1FC97FCBE945D = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64F698CADAF953D5401BB743 /* Debug */,
+				F066A9F349DA9567C6896ABD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C1AF496C6E84E903D5586A32 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A2FF341624FB6189F88D5DF /* Debug */,
+				3ED3DD793DE054529D2C4E72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 21ED56F57DD372261E2DA03E /* Project object */;
+}

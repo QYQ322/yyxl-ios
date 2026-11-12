@@ -1,0 +1,32 @@
+name: YingXingRoute
+options:
+  bundleIdPrefix: com.fyguiji
+  deploymentTarget:
+    iOS: "15.0"
+  createIntermediateGroups: true
+  developmentLanguage: zh-Hans
+targets:
+  YingXingRoute:
+    type: application
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources:
+      - path: YingXingRoute
+        excludes:
+          - "Info.plist"
+          - "YingXingRoute.entitlements"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.fyguiji.prp.ios
+        PRODUCT_NAME: YingXingRoute
+        MARKETING_VERSION: "1.21.18"
+        CURRENT_PROJECT_VERSION: "12118"
+        INFOPLIST_FILE: YingXingRoute/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        CODE_SIGN_ENTITLEMENTS: YingXingRoute/YingXingRoute.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        ENABLE_BITCODE: NO
+        IPHONEOS_DEPLOYMENT_TARGET: "15.0"
+        CODE_SIGN_STYLE: Automatic
